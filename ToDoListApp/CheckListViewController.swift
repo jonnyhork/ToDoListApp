@@ -8,7 +8,15 @@
 
 import UIKit
 
-class CheckListViewController: UITableViewController {
+class CheckListViewController: UITableViewController, addItemViewControllerDelegate {
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: checklistItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 
     
     var items: [checklistItem]
@@ -116,7 +124,6 @@ class CheckListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItem", for: indexPath)
         let item = items[indexPath.row]
-        
         
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)

@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="286" y="96"/>
         </scene>
-        <!--Title-->
+        <!--Add Item-->
         <scene sceneID="DqX-wH-rab">
             <objects>
-                <tableViewController id="8ln-JM-SOX" customClass="AddItemTableViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="8ln-JM-SOX" customClass="AddItemViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="wbC-t7-Dxp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,6 +76,10 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done" destination="8ln-JM-SOX" eventType="editingDidEndOnExit" id="4aF-kv-O9x"/>
+                                                        <outlet property="delegate" destination="8ln-JM-SOX" id="833-p6-nmd"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -88,7 +92,7 @@
                             <outlet property="delegate" destination="8ln-JM-SOX" id="O2K-Ll-OC2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="AwL-J2-zPF">
+                    <navigationItem key="navigationItem" title="Add Item" id="AwL-J2-zPF">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Jh3-J5-fgk">
                             <connections>
                                 <action selector="cancel" destination="8ln-JM-SOX" id="ocb-ZW-gfI"/>
@@ -101,6 +105,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarBtn" destination="Jh3-J5-fgk" id="pWY-0B-n5n"/>
+                        <outlet property="doneBarBtn" destination="O4V-Zl-r48" id="ojV-E1-BJK"/>
                         <outlet property="textField" destination="Zjx-dU-4fv" id="lsz-8k-Ovo"/>
                     </connections>
                 </tableViewController>
