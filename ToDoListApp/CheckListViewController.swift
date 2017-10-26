@@ -11,32 +11,51 @@ import UIKit
 class CheckListViewController: UITableViewController {
 
     
-    var row0Item: checklistItem
-    var row1Item: checklistItem
-    var row2Item: checklistItem
-    var row3Item: checklistItem
-    var row4Item: checklistItem
+    var items: [checklistItem]
     
     required init?(coder aDecoder: NSCoder) {
-        row0Item = checklistItem()
+        
+        items = [checklistItem]()
+        
+        let row0Item = checklistItem()
         row0Item.text = "walk the dog"
         row0Item.checked = false
+        items.append(row0Item)
         
-        row1Item = checklistItem()
+        let row1Item = checklistItem()
         row1Item.text = "brush teeth"
         row1Item.checked = false
+        items.append(row1Item)
         
-        row2Item = checklistItem()
+        let row2Item = checklistItem()
         row2Item.text = "learn iOS"
         row2Item.checked = false
+        items.append(row2Item)
         
-        row3Item = checklistItem()
+        let row3Item = checklistItem()
         row3Item.text = "this is silly"
         row3Item.checked = false
+        items.append(row3Item)
         
-        row4Item = checklistItem()
+        let row4Item = checklistItem()
         row4Item.text = "Clean room"
         row4Item.checked = false
+        items.append(row4Item)
+        
+        let row5Item = checklistItem()
+        row5Item.text = "sleep"
+        row5Item.checked = false
+        items.append(row5Item)
+        
+        let row6Item = checklistItem()
+        row6Item.text = "breakfast"
+        row6Item.checked = false
+        items.append(row6Item)
+        
+        let row7Item = checklistItem()
+        row7Item.text = "dinner"
+        row7Item.checked = false
+        items.append(row7Item)
         
         super.init(coder: aDecoder)
         
@@ -44,41 +63,51 @@ class CheckListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+    
+    @IBAction func addItem(){
+        let newRowIndex = items.count
+        let newItem = checklistItem()
+        
+        var titles = ["get a burrito", "Halloween costum", "meet jessie for lunch", "learn how to make AJAX calls with iOS", "get more sleep"]
+        let randomNum = arc4random_uniform(UInt32(titles.count))
+        let title = titles[Int(randomNum)]
+        
+        newItem.text = title
+        newItem.checked = true
+        items.append(newItem)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .left)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        items.remove(at: indexPath.row)
+        tableView.reloadData()
+        
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath){
             
+            let item = items[indexPath.row]
             
-            if indexPath.row == 0 {
-                row0Item.checked = !row0Item.checked
-            }
-            if indexPath.row == 1 {
-                row1Item.checked = !row1Item.checked
-            }
-            if indexPath.row == 2 {
-                row2Item.checked = !row2Item.checked
-            }
-            if indexPath.row == 3 {
-                row3Item.checked = !row3Item.checked
-            }
-            if indexPath.row == 4 {
-                row4Item.checked = !row4Item.checked
-                
-            }
-            
-            configureCheckmark(for: cell, at: indexPath)
-            
+            item.toggleChecked()
+            configureCheckmark(for: cell, with: item)
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
@@ -86,45 +115,24 @@ class CheckListViewController: UITableViewController {
     // this is where you customize the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItem", for: indexPath)
+        let item = items[indexPath.row]
         
-        let label = cell.viewWithTag(1000) as! UILabel
         
-        
-        if (indexPath.row == 0) {
-            label.text = row0Item.text
-        } else if (indexPath.row == 1){
-            label.text = row1Item.text
-        } else if (indexPath.row == 2){
-            label.text = row2Item.text
-        } else if (indexPath.row == 3){
-            label.text = row3Item.text
-        } else if (indexPath.row == 4){
-            label.text = row4Item.text
-        }
-        
-        configureCheckmark(for: cell, at: indexPath)
+        configureText(for: cell, with: item)
+        configureCheckmark(for: cell, with: item)
         
         return cell
     }
+    
+    func configureText(for cell: UITableViewCell, with item: checklistItem){
+        let label = cell.viewWithTag(1000) as! UILabel
+        label.text = item.text
+    }
 
     
-    func configureCheckmark(for cell: UITableViewCell, at indexPath: IndexPath){
+    func configureCheckmark(for cell: UITableViewCell, with item: checklistItem){
         
-        var isChecked = false
-        
-        if indexPath.row == 0 {
-            isChecked = row0Item.checked
-        } else if (indexPath.row == 1){
-            isChecked = row1Item.checked
-        }else if (indexPath.row == 2){
-            isChecked = row2Item.checked
-        }else if (indexPath.row == 3){
-            isChecked = row3Item.checked
-        }else if (indexPath.row == 4){
-            isChecked = row4Item.checked
-        }
-        
-        if isChecked {
+        if item.checked {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -132,9 +140,7 @@ class CheckListViewController: UITableViewController {
         
     }
     
-    
-    
-    
+
 
 }
 
