@@ -41,17 +41,72 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do List" id="leU-41-Poh">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="sPQ-Kt-qDm"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eC8-62-ZWP">
                             <connections>
-                                <action selector="addItem" destination="3ke-18-Vpe" id="R6D-hE-z7T"/>
+                                <segue destination="8ln-JM-SOX" kind="show" id="w83-Ws-epF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3P-xx-kOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="255.19999999999999" y="95.802098950524751"/>
+            <point key="canvasLocation" x="286" y="96"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="DqX-wH-rab">
+            <objects>
+                <tableViewController id="8ln-JM-SOX" customClass="AddItemTableViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="wbC-t7-Dxp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="4OD-XJ-OI4">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pRX-na-MXy">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pRX-na-MXy" id="RBm-Gc-XAp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zjx-dU-4fv">
+                                                    <rect key="frame" x="8" y="8" width="359" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="8ln-JM-SOX" id="mGI-qc-wOg"/>
+                            <outlet property="delegate" destination="8ln-JM-SOX" id="O2K-Ll-OC2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="AwL-J2-zPF">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Jh3-J5-fgk">
+                            <connections>
+                                <action selector="cancel" destination="8ln-JM-SOX" id="ocb-ZW-gfI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="O4V-Zl-r48">
+                            <connections>
+                                <action selector="done" destination="8ln-JM-SOX" id="vcc-Pu-RBx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="Zjx-dU-4fv" id="lsz-8k-Ovo"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mY9-oy-7y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064.8" y="95.802098950524751"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cs0-It-za6">

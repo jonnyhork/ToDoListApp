@@ -13,6 +13,7 @@
 		F418EFDC1FA142590072AF7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F418EFDB1FA142590072AF7C /* Assets.xcassets */; };
 		F418EFDF1FA142590072AF7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F418EFDD1FA142590072AF7C /* LaunchScreen.storyboard */; };
 		F418EFE71FA18F420072AF7C /* checklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F418EFE61FA18F420072AF7C /* checklistItem.swift */; };
+		F418EFEB1FA225EE0072AF7C /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F418EFEA1FA225EE0072AF7C /* AddItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F418EFDE1FA142590072AF7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F418EFE01FA142590072AF7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F418EFE61FA18F420072AF7C /* checklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checklistItem.swift; sourceTree = "<group>"; };
+		F418EFEA1FA225EE0072AF7C /* AddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		F418EFD31FA142590072AF7C /* ToDoListApp */ = {
 			isa = PBXGroup;
 			children = (
+				F418EFEA1FA225EE0072AF7C /* AddItemTableViewController.swift */,
 				F418EFD41FA142590072AF7C /* AppDelegate.swift */,
 				F418EFD61FA142590072AF7C /* CheckListViewController.swift */,
 				F418EFE61FA18F420072AF7C /* checklistItem.swift */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F418EFEB1FA225EE0072AF7C /* AddItemTableViewController.swift in Sources */,
 				F418EFD71FA142590072AF7C /* CheckListViewController.swift in Sources */,
 				F418EFD51FA142590072AF7C /* AppDelegate.swift in Sources */,
 				F418EFE71FA18F420072AF7C /* checklistItem.swift in Sources */,
