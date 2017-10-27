@@ -7,6 +7,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--To Do List-->
         <scene sceneID="Hgn-pV-RLb">
@@ -17,22 +22,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ToDoItem" id="Tt6-fm-tag">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ToDoItem" id="Tt6-fm-tag">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tt6-fm-tag" id="xVm-zT-wa3">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5w-iS-O0o">
-                                            <rect key="frame" x="8" y="14" width="328" height="21"/>
+                                            <rect key="frame" x="29" y="14" width="279" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COO-Mh-mXY">
+                                            <rect key="frame" x="8" y="11" width="13" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" red="0.12376436535586333" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="8ln-JM-SOX" kind="show" identifier="EditItem" trigger="accessoryAction" id="usS-Q1-UZT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,14 +58,14 @@
                     <navigationItem key="navigationItem" title="To Do List" id="leU-41-Poh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eC8-62-ZWP">
                             <connections>
-                                <segue destination="8ln-JM-SOX" kind="show" id="w83-Ws-epF"/>
+                                <segue destination="8ln-JM-SOX" kind="show" identifier="AddItem" id="w83-Ws-epF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B3P-xx-kOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="286" y="96"/>
+            <point key="canvasLocation" x="285.60000000000002" y="95.802098950524751"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="DqX-wH-rab">
@@ -98,7 +113,7 @@
                                 <action selector="cancel" destination="8ln-JM-SOX" id="ocb-ZW-gfI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="O4V-Zl-r48">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="O4V-Zl-r48">
                             <connections>
                                 <action selector="done" destination="8ln-JM-SOX" id="vcc-Pu-RBx"/>
                             </connections>
@@ -112,7 +127,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mY9-oy-7y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.8" y="95.802098950524751"/>
+            <point key="canvasLocation" x="1286" y="96"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cs0-It-za6">
@@ -133,4 +148,7 @@
             <point key="canvasLocation" x="-532" y="96"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="usS-Q1-UZT"/>
+    </inferredMetricsTieBreakers>
 </document>
